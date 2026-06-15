@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suvanth Erranki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07090d;
+      --surface: #0e1118;
+      --border: #1a2030;
+      --border-soft: #222d40;
+      --text: #dce8f2;
+      --muted: #889db9;
+      --accent: #7ab8d4;
+      --accent-dim: #4a8aaa;
+      --accent-glow: rgba(122,184,212,0.07);
+      --green: #6dbf8a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(122,184,212,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122,184,212,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(38px, 7vw, 56px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .bio {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 1000px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .bio strong { color: var(--text); font-weight: 400; }
+
+    /* ── NAV LINK BUTTONS ── */
+    .links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 15px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.015);
+      transition: color 0.18s, border-color 0.18s, background 0.18s, transform 0.15s;
+    }
+
+    .links a svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      fill: currentColor;
+      opacity: 0.6;
+      transition: opacity 0.18s;
+    }
+
+    .links a:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+      background: var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .links a:hover svg { opacity: 1; }
+
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    section:nth-child(2) { animation-delay: 0.08s; }
+    section:nth-child(3) { animation-delay: 0.14s; }
+    section:nth-child(4) { animation-delay: 0.20s; }
+    section:nth-child(5) { animation-delay: 0.26s; }
+    section:nth-child(6) { animation-delay: 0.32s; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .section-num { font-size: 11px; color: var(--accent-dim); letter-spacing: 0.1em; }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-list { display: flex; flex-direction: column; }
+
+    .edu { padding: 18px 0; border-top: 1px solid var(--border); }
+    .edu:first-child { border-top: none; }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .edu-school { font-size: 15px; color: var(--text); font-weight: 500; }
+    .edu-date { font-size: 11px; color: var(--accent-dim); letter-spacing: 0.08em; white-space: nowrap; }
+    .edu-degree { font-size: 14px; color: var(--muted); margin-bottom: 3px; }
+    .edu-detail { font-size: 13px; color: var(--muted); opacity: 0.7; }
+
+    .exp-list { display: flex; flex-direction: column; }
+    .exp { padding: 18px 0; border-top: 1px solid var(--border); }
+    .exp:first-child { border-top: none; }
+    .exp-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .exp-role {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+      min-width: 0;
+    }
+    .exp-date {
+      font-size: 11px;
+      color: var(--accent-dim);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      justify-self: end;
+    }
+    .exp-location { font-size: 14px; color: var(--muted); margin-bottom: 3px; }
+    .exp-detail { font-size: 13px; color: var(--muted); opacity: 0.7; }
+
+    /* ── PROJECTS ── */
+    .project {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .project:first-of-type { border-top: none; }
+
+    .project-name { font-size: 15px; color: var(--text); font-weight: 500; margin-bottom: 6px; }
+
+    .project-stack {
+      font-size: 11px;
+      color: var(--accent-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 520px; }
+
+    .project-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    .project-links a {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 5px 12px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.015);
+      transition: color 0.18s, border-color 0.18s, background 0.18s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .project-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+      background: var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    /* ── CRED LIST (experience + awards) ── */
+    .cred-list { display: flex; flex-direction: column; }
+
+    .cred {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cred:first-child { border-top: none; }
+
+    .cred-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--accent-dim);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .cred-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .cred-text strong { color: var(--text); font-weight: 400; }
+
+    /* ── CONTACT ── */
+    .contact-line { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .contact-line a { color: var(--accent); text-decoration: none; }
+    .contact-line a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer { padding: 32px 0; animation: fadeUp 0.6s ease 0.38s both; }
+
+    .footer-inner {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .footer-right { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; opacity: 0.4; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 540px) {
+      .project { grid-template-columns: 1fr; }
+      .project-links { flex-direction: row; align-items: flex-start; }
+      header { padding: 56px 0 40px; }
+      .edu-header { flex-direction: column; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Suvanth <em>Erranki</em></h1>
+    <p class="bio">
+      I'm a student at <strong>Carnegie Mellon's School of Computer Science</strong>.
+    </p>
+    <div class="links">
+
+      <a href="mailto:serranki@andrew.cmu.edu">
+        <!-- Envelope -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email
+      </a>
+
+      <a href="https://github.com/Suvanth-Erranki" target="_blank">
+        <!-- GitHub -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+
+      <a href="https://linkedin.com/in/suvanth-erranki" target="_blank">
+        <!-- LinkedIn -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+
+    </div>
+  </header>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-list">
+      <div class="edu">
+        <div class="edu-header">
+          <span class="edu-school">Carnegie Mellon University —— School of Computer Science</span>
+          <span class="edu-date">Expected May 2029</span>
+        </div>
+        <div class="edu-degree">B.S. Computer Science — GPA 4.0</div>
+      </div>
+      <div class="edu">
+        <div class="edu-header">
+          <span class="edu-school">Princeton University</span>
+          <span class="edu-date">Sep 2025 – May 2026</span>
+        </div>
+        <div class="edu-degree">Dual Enrollment, Mathematics — GPA 4.0</div>
+        <div class="edu-detail">Studied Real Analysis and Number Theory.</div>
+      </div>
+          <div class="edu">
+        <div class="edu-header">
+          <span class="edu-school">West Windsor-Plainsboro High School South</span>
+          <span class="edu-date">Sep 2022 – Jun 2026</span>
+        </div>
+        <div class="edu-degree">High School Diploma — GPA 4.0 UW, 4.92 W</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp">
+        <div class="exp-header">
+          <span class="exp-role">AI/ML Intern — Lockheed Martin</span>
+          <span class="exp-date">Jun. 2026 – Aug. 2026</span>
+        </div>
+        <div class="exp-location">Moorestown, NJ</div>
+        <div class="exp-detail">Summer 2026 internship building machine learning solutions in a systems-focused environment.</div>
+      </div>
+      <div class="exp">
+        <div class="exp-header">
+          <span class="exp-role">Lead Organizer — West Windsor-Plainsboro Programming Competitions</span>
+          <span class="exp-date">Feb. 2024 – Present</span>
+        </div>
+        <div class="exp-location">Princeton Junction, New Jersey</div>
+        <div class="exp-detail">Co-founded a 501(c)(3) competitive programming nonprofit hosting coding competitions for 500+ students with $10K+ in prizes. Secured sponsorships from Jane Street and HRT while managing infrastructure, problem development, and contest operations.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Awards</h2>
+    </div>
+    <div class="cred-list">
+      <div class="cred">
+        <div class="cred-dot"></div>
+        <div class="cred-text"><strong>USACO Platinum Division — US Open Finals Qualifier (2026)</strong> — Top 75 students invited to the final round of the USA Computing Olympiad.</div>
+      </div>
+      <div class="cred">
+        <div class="cred-dot"></div>
+        <div class="cred-text"><strong>1st Place — MIT Battlecode 2025</strong> — High school division, ~100 teams.</div>
+      </div>
+      <div class="cred">
+        <div class="cred-dot"></div>
+        <div class="cred-text"><strong>1st Place — Cornell High School Programming Contest 2025</strong> — 1st of 75 teams.</div>
+      </div>
+      <div class="cred">
+        <div class="cred-dot"></div>
+        <div class="cred-text"><strong>1st Place — UPenn PClassic 2025</strong> (Advanced Division) — 1st of 50+ online teams.</div>
+      </div>
+      <div class="cred">
+        <div class="cred-dot"></div>
+        <div class="cred-text"><strong>1st Place — Lockheed Martin Code Quest 2026</strong> (Advanced Division) — 1st of 30+ regional teams.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="project">
+      <div>
+        <div class="project-name">WWP Programming Competitions — Online Judge</div>
+        <div class="project-stack">TypeScript · Node.js · Linux</div>
+        <div class="project-desc">
+          Built a competitive programming online judge supporting C/C++/Java/Python/PyPy with sandboxed execution, custom checkers, testcase generators, and automated scoring.
+          Implemented isolated Linux-based grading environments with enforced CPU, memory, wall-clock, and process limits, evaluating 5K+ submissions from 500+ contestants across 3 competitions.
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="https://wwppc.org/wwpit" target="_blank">Contest Site ↗</a>
+        <a href="https://github.com/WWPPC" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div>
+        <div class="project-name">Kinetic Hero — Chess Engine</div>
+        <div class="project-stack">C++23</div>
+        <div class="project-desc">
+          Developed a C++ chess engine using Monte Carlo Tree Search (MCTS) and bitboard-based move generation.
+          Optimized move generation with precomputed attack tables, achieving 10M nodes/sec on a single Apple M2 Pro core while tuning PUCT hyperparameters.
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Suvanth-Erranki/Kinetic-Hero-Chess-Engine" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div>
+        <div class="project-name">MIT Battlecode AI Bot</div>
+        <div class="project-stack">Java</div>
+        <div class="project-desc">
+          Developed heuristic pathfinding and multi-agent coordination under strict bytecode budgets to optimize decision quality in hard real-time constraints.
+          Placed 1st out of 94 high school teams in MIT Battlecode Tournament.
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="https://youtu.be/lVtX8-I_cWQ?t=7786" target="_blank">Finals ↗</a>
+        <a href="https://github.com/erikji/battlecode25" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Contact</h2>
+    </div>
+    <p class="contact-line">
+      Reach me at <a href="mailto:serranki@andrew.cmu.edu">serranki@andrew.cmu.edu</a>
+    </p>
+    <p class="contact-line">
+      GitHub: <a href="https://github.com/Suvanth-Erranki" target="_blank">github.com/Suvanth-Erranki</a>
+    </p>
+    <p class="contact-line">
+      LinkedIn: <a href="https://linkedin.com/in/suvanth-erranki" target="_blank">linkedin.com/in/suvanth-erranki</a>
+    </p>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-right">© 2026 Suvanth Erranki</span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
