@@ -229,6 +229,15 @@
 
     .project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 520px; }
 
+    .bullet-list {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 12px 0 0 1rem;
+      padding-left: 0;
+      list-style-position: inside;
+    }
+
     .project-links {
       display: flex;
       flex-direction: column;
@@ -322,17 +331,16 @@
   <header>
     <h1>Suvanth <em>Erranki</em></h1>
     <p class="bio">
-      I'm a student at <strong>Carnegie Mellon's School of Computer Science</strong>.
+      
     </p>
     <div class="links">
-
       <a href="mailto:serranki@andrew.cmu.edu">
         <!-- Envelope -->
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        Email
+        serranki@andrew.cmu.edu
       </a>
 
-      <a href="https://github.com/Suvanth-Erranki" target="_blank">
+      <a href="https://github.com/suvanth-erranki" target="_blank">
         <!-- GitHub -->
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         GitHub
@@ -355,25 +363,19 @@
     <div class="edu-list">
       <div class="edu">
         <div class="edu-header">
-          <span class="edu-school">Carnegie Mellon University —— School of Computer Science</span>
+          <span class="edu-school">Carnegie Mellon University</span>
           <span class="edu-date">Expected May 2029</span>
         </div>
-        <div class="edu-degree">B.S. Computer Science — GPA 4.0</div>
+        <div class="edu-degree">Bachelor of Science, Computer Science — GPA: 4.0/4.0</div>
+        <div class="edu-detail">Pittsburgh, PA · Relevant Coursework: Matrix Theory, Imperative Computation, Math Foundations for CS, Putnam Seminar</div>
       </div>
       <div class="edu">
         <div class="edu-header">
           <span class="edu-school">Princeton University</span>
-          <span class="edu-date">Sep 2025 – May 2026</span>
+          <span class="edu-date">May 2026</span>
         </div>
-        <div class="edu-degree">Dual Enrollment, Mathematics — GPA 4.0</div>
-        <div class="edu-detail">Studied Real Analysis and Number Theory.</div>
-      </div>
-          <div class="edu">
-        <div class="edu-header">
-          <span class="edu-school">West Windsor-Plainsboro High School South</span>
-          <span class="edu-date">Sep 2022 – Jun 2026</span>
-        </div>
-        <div class="edu-degree">High School Diploma — GPA 4.0 UW, 4.94 W</div>
+        <div class="edu-degree">Dual Enrollment, Mathematics — GPA: 4.0/4.0</div>
+        <div class="edu-detail">Princeton, NJ · Relevant Coursework: Real Analysis, Number Theory</div>
       </div>
     </div>
   </section>
@@ -381,24 +383,34 @@
   <section>
     <div class="section-header">
       <span class="section-num">02</span>
-      <h2>Experience</h2>
+      <h2>Activities &amp; Experience</h2>
     </div>
     <div class="exp-list">
       <div class="exp">
         <div class="exp-header">
-          <span class="exp-role">Software Engineering Intern — Lockheed Martin</span>
-          <span class="exp-date">Jun. 2026 – Aug. 2026</span>
+          <span class="exp-role">Software Engineering Intern, Lockheed Martin</span>
+          <span class="exp-date">Jun. 2026 — Aug. 2026</span>
         </div>
         <div class="exp-location">Moorestown, NJ</div>
-        <div class="exp-detail">To be updated.</div>
+        <div class="exp-detail">
+          <ul class="bullet-list">
+            <li>Engineered an end-to-end aerospace cost-analysis pipeline in Python, loading a 20-column, 220K row dataset of aircraft models and parts into an interactive Plotly/Dash dashboard.</li>
+            <li>Constructed cost-flow graphs with Kahn's topological sort over 185K nodes and 169K edges, flagging 15K+ problem nodes.</li>
+            <li>Developed an NL-to-SQL pipeline that generates validated DuckDB queries from aerospace prompts using the internal Genesis LLM API. Implemented a Pandas query executor to filter 220K rows in 22ms.</li>
+          </ul>
+        </div>
       </div>
       <div class="exp">
         <div class="exp-header">
-          <span class="exp-role">Lead Organizer — West Windsor-Plainsboro Programming Competitions</span>
-          <span class="exp-date">Feb. 2024 – Present</span>
+          <span class="exp-role">Lead Organizer, West Windsor-Plainsboro Programming Competitions</span>
+          <span class="exp-date">Feb. 2024 — Jun. 2026</span>
         </div>
-        <div class="exp-location">Princeton Junction, New Jersey</div>
-        <div class="exp-detail">Co-founded a 501(c)(3) competitive programming nonprofit hosting coding competitions for 500+ students with $10K+ in prizes. Secured sponsorships from Jane Street and HRT while managing infrastructure, problem development, and contest operations.</div>
+        <div class="exp-location">Princeton Junction, NJ</div>
+        <div class="exp-detail">
+          <ul class="bullet-list">
+            <li>501(c)(3) sponsored by Jane Street, HRT, and more; hosted 3 programming competitions for 500+ students (latest at TCNJ); distributed $10K+ in cash prizes, raffles, and merchandise.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -411,23 +423,23 @@
     <div class="cred-list">
       <div class="cred">
         <div class="cred-dot"></div>
-        <div class="cred-text"><strong>USACO Platinum — US Open Championship Qualifier (2026)</strong> — Top 75 students invited to the final round of the USA Computing Olympiad.</div>
+        <div class="cred-text"><strong>USA Computing Olympiad Platinum &amp; US Open Championship Invitee (1 of 75)</strong> — Mar. 2026</div>
       </div>
       <div class="cred">
         <div class="cred-dot"></div>
-        <div class="cred-text"><strong>MIT Battlecode 2025 — 1st Place HS / 7th Overall</strong>113 HS teams, 504 overall teams.</div>
+        <div class="cred-text"><strong>MIT Battlecode 2025 Finalist</strong> — 1st/113 HS Teams, 7th/504 Overall (<a href="https://youtu.be/lVtX8-I_cWQ?t=7786" target="_blank">Finals Broadcast</a>)</div>
       </div>
       <div class="cred">
         <div class="cred-dot"></div>
-        <div class="cred-text"><strong>1st Place — Cornell High School Programming Contest 2025</strong> — 1st of 75 teams.</div>
+        <div class="cred-text"><strong>1st Place — Lockheed Martin Code Quest Advanced</strong> (30 teams) — Feb. 2026</div>
       </div>
       <div class="cred">
         <div class="cred-dot"></div>
-        <div class="cred-text"><strong>1st Place — UPenn PClassic 2025</strong> (Advanced Division) — 1st of 50+ online teams.</div>
+        <div class="cred-text"><strong>1st Place — Cornell HS Programming Contest</strong> (75 teams) — Mar. 2025</div>
       </div>
       <div class="cred">
         <div class="cred-dot"></div>
-        <div class="cred-text"><strong>1st Place — Lockheed Martin Code Quest 2026</strong> (Advanced Division) — 1st of 30+ regional teams.</div>
+        <div class="cred-text"><strong>1st Place — UPenn PClassic Advanced</strong> (50 teams) — Apr. 2025</div>
       </div>
     </div>
   </section>
@@ -440,44 +452,26 @@
 
     <div class="project">
       <div>
-        <div class="project-name">WWP Programming Competitions — Online Judge</div>
+        <div class="project-name">WWP Programming Competitions Online Judge</div>
         <div class="project-stack">TypeScript · Node.js · Linux</div>
         <div class="project-desc">
-          Built a competitive programming online judge supporting C/C++/Java/Python/PyPy with sandboxed execution, custom checkers, testcase generators, and automated scoring.
-          Implemented isolated Linux-based grading environments with enforced CPU, memory, wall-clock, and process limits, evaluating 5K+ submissions from 500+ contestants across 3 competitions.
+          Built a secure multi-language online judge in TypeScript/Node.js supporting C/C++, Java, Python, and PyPy with Linux <span style="font-family: monospace;">isolate</span> sandboxes, custom checkers, testcase generators, and automated scoring.
+          Implemented a fault-tolerant distributed grader with authenticated job scheduling and automatic recovery from interrupted tasks, evaluating 5K+ submissions from 500+ users across 3 contests.
         </div>
-      </div>
-      <div class="project-links">
-        <a href="https://wwppc.org/wwpit" target="_blank">Contest Site ↗</a>
-        <a href="https://github.com/WWPPC" target="_blank">GitHub ↗</a>
       </div>
     </div>
 
     <div class="project">
       <div>
-        <div class="project-name">Kinetic Hero — Chess Engine</div>
+        <div class="project-name">Chess Engine “Kinetic Hero”</div>
         <div class="project-stack">C++23</div>
         <div class="project-desc">
-          Developed a C++ chess engine using Monte Carlo Tree Search (MCTS) and bitboard-based move generation.
-          Optimized move generation with precomputed attack tables, achieving 10M nodes/sec on a single Apple M2 Pro core while tuning PUCT hyperparameters.
+          C++ chess engine incorporating Monte Carlo Tree Search (MCTS) and bitboard-based move generation.
+          Optimized move generation with precomputed attack tables and magic-bitboards, yielding 60M nodes/sec on a single Apple M2 Pro core.
         </div>
       </div>
       <div class="project-links">
-        <a href="https://github.com/Suvanth-Erranki/Kinetic-Hero-Chess-Engine" target="_blank">GitHub ↗</a>
-      </div>
-    </div>
-
-    <div class="project">
-      <div>
-        <div class="project-name">MIT Battlecode AI Bot</div>
-        <div class="project-stack">Java</div>
-        <div class="project-desc">
-          Developed heuristic pathfinding and multi-agent coordination under strict bytecode budgets to optimize decision quality in hard real-time constraints.
-        </div>
-      </div>
-      <div class="project-links">
-        <a href="https://youtu.be/lVtX8-I_cWQ?t=7786" target="_blank">Finals ↗</a>
-        <a href="https://github.com/erikji/battlecode25" target="_blank">GitHub ↗</a>
+        <a href="https://github.com/Suvanth-Erranki/kinetic-hero-chess-engine" target="_blank">Source Code ↗</a>
       </div>
     </div>
   </section>
@@ -485,17 +479,22 @@
   <section>
     <div class="section-header">
       <span class="section-num">05</span>
-      <h2>Contact</h2>
+      <h2>Skills</h2>
     </div>
-    <p class="contact-line">
-      Reach me at <a href="mailto:serranki@andrew.cmu.edu">serranki@andrew.cmu.edu</a>
-    </p>
-    <p class="contact-line">
-      GitHub: <a href="https://github.com/Suvanth-Erranki" target="_blank">github.com/Suvanth-Erranki</a>
-    </p>
-    <p class="contact-line">
-      LinkedIn: <a href="https://linkedin.com/in/suvanth-erranki" target="_blank">linkedin.com/in/suvanth-erranki</a>
-    </p>
+    <div class="exp-list">
+      <div class="exp">
+        <div class="exp-detail">Languages: C++, Python, C, Java, JavaScript, TypeScript, HTML/CSS</div>
+      </div>
+      <div class="exp">
+        <div class="exp-detail">Systems &amp; Tools: Linux, Docker, Git, PostgreSQL, MySQL, Bash, Vim</div>
+      </div>
+      <div class="exp">
+        <div class="exp-detail">ML/Data: PyTorch, NumPy, pandas, Matplotlib</div>
+      </div>
+      <div class="exp">
+        <div class="exp-detail">Frameworks: React, Node.js, Vue</div>
+      </div>
+    </div>
   </section>
 
   <footer>
